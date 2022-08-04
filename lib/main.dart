@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigations/grey_page.dart';
 import 'package:flutter_navigations/purple_page.dart';
+import 'package:flutter_navigations/route_generator.dart';
 import 'package:flutter_navigations/teal_page.dart';
 
 void main() => runApp(MyApp());
@@ -10,14 +11,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      //home: MainMenu(),
-      routes: {
+        title: 'Material App',
+        //home: MainMenu(),
+        /*routes: {
         "purplePage": (context) => PurplePage(),
         "/": (context) => MainMenu(),
         "-greyPage" :(context) => GreyPage(),
       },
-    );
+      onUnknownRoute: (settings) => MaterialPageRoute(builder: (context)=> Scaffold(
+        appBar: AppBar(title: Text("Error"),),
+        body: Center(child: Text("404"),),
+      )),*/
+        onGenerateRoute: RouteGenerator.routeGenerator);
   }
 }
 
@@ -64,7 +69,7 @@ class MainMenu extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               //Navigator.of(context).pushNamed("purplePage")
-              Navigator.pushNamed(context, "purplePage");
+              Navigator.pushNamed(context, "/purplePage2");
             },
             style: ElevatedButton.styleFrom(primary: Colors.orange),
             child: Text("Enter the  page"),
