@@ -2,13 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigations/grey_page.dart';
 import 'package:flutter_navigations/purple_page.dart';
+import 'package:flutter_navigations/teal_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Material App', home: MainMenu());
+    return MaterialApp(
+      title: 'Material App',
+      //home: MainMenu(),
+      routes: {
+        "purplePage": (context) => PurplePage(),
+        "/": (context) => MainMenu(),
+        "-greyPage" :(context) => GreyPage(),
+      },
+    );
   }
 }
 
@@ -24,6 +33,14 @@ class MainMenu extends StatelessWidget {
       body: Center(
           child: Column(
         children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => TealPage()));
+            },
+            style: ElevatedButton.styleFrom(primary: Colors.teal),
+            child: Text("Enter the teal page"),
+          ),
           ElevatedButton(
             onPressed: () {
               if (Navigator.canPop(context)) {
@@ -43,7 +60,15 @@ class MainMenu extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(primary: Colors.purple),
             child: Text("Enter the Purple page"),
-          )
+          ),
+          ElevatedButton(
+            onPressed: () {
+              //Navigator.of(context).pushNamed("purplePage")
+              Navigator.pushNamed(context, "purplePage");
+            },
+            style: ElevatedButton.styleFrom(primary: Colors.orange),
+            child: Text("Enter the  page"),
+          ),
         ],
       )),
     );
