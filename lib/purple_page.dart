@@ -31,7 +31,13 @@ class PurplePage extends StatelessWidget {
                   print("sayı = $_randomSayi");
                   Navigator.of(context).pop(_randomSayi);
                 },
-                child: Text("Back"))
+                child: Text("Back")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "-greyPage");
+                },
+                style: ElevatedButton.styleFrom(primary: Colors.blue),
+                child: Text("Go to grey")),
           ],
         )),
       ),
