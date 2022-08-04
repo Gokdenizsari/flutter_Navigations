@@ -11,9 +11,20 @@ class TealPage extends StatelessWidget {
         backgroundColor: Colors.grey,
       ),
       body: Center(
-          child: Text(
-        "Teal Page",
-        style: TextStyle(fontSize: 24),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "-greyPage");
+              },
+              style: ElevatedButton.styleFrom(primary: Colors.blue),
+              child: Text("Go to grey")),
+          Text(
+            "Teal Page",
+            style: TextStyle(fontSize: 24),
+          ),
+        ],
       )),
     );
   }
